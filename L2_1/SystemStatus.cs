@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace L2_1
+﻿namespace L2_1
 {
     class SystemStatus : TwoLogicalField
     {
-        string nameSystem;
+        private string _nameSystem;
 
         public SystemStatus(string nameSystem, bool firstLogicalField, bool secondLogicalField) : base(firstLogicalField, secondLogicalField)
         {
-            this.nameSystem = nameSystem;
+            _nameSystem = nameSystem;
         }
 
         public SystemStatus(SystemStatus copy) : base(copy)
         {
-            this.nameSystem = copy.nameSystem;
+            _nameSystem = copy._nameSystem;
         }
 
         public string GetSystemStatus()
         {
-            return base.Disjunction() ? "Система активна" : "Система не активна";
+            return Disjunction() ? "Система активна" : "Система не активна";
         }
 
         public int GetNumberActivField(bool firstLogicalField, bool secondLogicalField)
@@ -45,7 +39,7 @@ namespace L2_1
         public override string ToString()
         {
             Console.WriteLine();
-            return $"Имя системы: {nameSystem}";
+            return $"Имя системы: {_nameSystem}";
         }
     }
 }
