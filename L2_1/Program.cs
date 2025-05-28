@@ -34,7 +34,7 @@ class Program
             string nameSystem = Console.ReadLine();
 
             Console.SetCursorPosition(positionCursorLeft, positionCursorTop);
-            Console.Write(new string(' ', Console.WindowWidth * 4)); // Очищаем 3 строки
+            Console.Write(new string(' ', Console.WindowWidth * 4)); 
 
 
             SystemStatus systemState = new SystemStatus(nameSystem, firstLogicalField, secondLogicalField);

@@ -3,7 +3,18 @@
     internal class TwoLogicalField
     {
         private bool _firstLogicalField;
+        public bool FirstLogicalField
+        {
+            get => _firstLogicalField;
+            set => _firstLogicalField = value;
+        }
+
         private bool _secondLogicalField;
+        public bool SecondLogicalField
+        {
+            get => _secondLogicalField;
+            set => _secondLogicalField = value;
+        }
 
         public TwoLogicalField(bool firstLogicalField, bool secondLogicalField)
         {
@@ -13,8 +24,8 @@
 
         public TwoLogicalField(TwoLogicalField copy)
         {
-            this._firstLogicalField = copy._firstLogicalField;
-            this._secondLogicalField = copy._secondLogicalField;
+            _firstLogicalField = copy.FirstLogicalField;
+            _secondLogicalField = copy.SecondLogicalField;
         }
 
         public bool Disjunction()

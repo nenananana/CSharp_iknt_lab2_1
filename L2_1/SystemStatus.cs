@@ -3,6 +3,11 @@
     class SystemStatus : TwoLogicalField
     {
         private string _nameSystem;
+        public string NameSystem
+        {
+            get => _nameSystem;
+            set => _nameSystem = value;
+        }
 
         public SystemStatus(string nameSystem, bool firstLogicalField, bool secondLogicalField) : base(firstLogicalField, secondLogicalField)
         {
@@ -11,7 +16,7 @@
 
         public SystemStatus(SystemStatus copy) : base(copy)
         {
-            _nameSystem = copy._nameSystem;
+            _nameSystem = copy.NameSystem;
         }
 
         public string GetSystemStatus()
