@@ -1,5 +1,4 @@
-﻿
-using L2_1;
+﻿using L2_1;
 using System;
 using System.Security.Cryptography.X509Certificates;
 class Program
@@ -9,29 +8,41 @@ class Program
         try
         {
             Console.WriteLine("Введите логическое значение первого поля (true/false): ");
-            bool field1 = Convert.ToBoolean(Console.ReadLine());
+            bool firstLogicalField = Convert.ToBoolean(Console.ReadLine());
             Console.WriteLine("Введите логическое значение второго поля (true/false): ");
-            bool field2 = Convert.ToBoolean(Console.ReadLine());
+            bool secondLogicalField = Convert.ToBoolean(Console.ReadLine());
+
+            Console.Clear();
 
             // Тестирование базового класса
-            TwoLogicalField baseObj = new TwoLogicalField(field1, field2);
-            Console.WriteLine(baseObj.ToString());
-            Console.WriteLine($"Дизъюнкция (логическое ИЛИ) = {baseObj.Disjunction()}");
-            // Тестирование конструктора копирования базового класса
-            TwoLogicalField copiedBaseObj = new TwoLogicalField(baseObj);
-            Console.WriteLine($"Конструктор копированя:  {copiedBaseObj.ToString()}");
+            TwoLogicalField baseObject = new TwoLogicalField(firstLogicalField, secondLogicalField);
 
-            // --------------------------------------------------------------------------- //
+            Console.WriteLine(baseObject.ToString());
+            Console.WriteLine($"Дизъюнкция (логическое ИЛИ) = {baseObject.Disjunction()}");
+
+            TwoLogicalField copiedBaseObject = new TwoLogicalField(baseObject);
+
+            Console.WriteLine($"Конструктор копированя: {copiedBaseObject.ToString()}");
 
             // Тестирование дочернего класса
-            Console.WriteLine("\nВводится имя сисетмы и проверяется работает ли она. \nЕсли хотя бы один из показателей работает, то система работает.");
+            int positionCursorLeft = Console.CursorLeft;
+            int positionCursorTop = Console.CursorTop;
+
+            Console.WriteLine("\nВводится имя системы и проверяется работает ли она.");
+            Console.WriteLine("Если хотя бы один из показателей работает, то система работает.");
             Console.WriteLine("Введите название системы: ");
-            string name = Convert.ToString(Console.ReadLine());
-            SystemStatus systemState = new SystemStatus(name, field1, field2);
+
+            string nameSystem = Console.ReadLine();
+
+            Console.SetCursorPosition(positionCursorLeft, positionCursorTop);
+            Console.Write(new string(' ', Console.WindowWidth * 4)); // Очищаем 3 строки
+
+
+            SystemStatus systemState = new SystemStatus(nameSystem, firstLogicalField, secondLogicalField);
+
             Console.WriteLine(systemState.ToString());
             Console.WriteLine(systemState.GetSystemStatus());
-
-            Console.WriteLine($"Выполняется {Convert.ToString(systemState.GetNumber(field1, field2))} процессов");
+            Console.WriteLine($"Выполняется {Convert.ToString(systemState.GetNumberActivField(firstLogicalField, secondLogicalField))} процессов");
         }
         catch
         {

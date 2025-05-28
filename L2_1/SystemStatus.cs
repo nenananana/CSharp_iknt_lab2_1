@@ -8,41 +8,44 @@ namespace L2_1
 {
     class SystemStatus : TwoLogicalField
     {
-        bool bool1;
-        bool bool2;
-        string systemName;
-        public SystemStatus(string name, bool b1, bool b2) : base(b1, b2)
+        string nameSystem;
+
+        public SystemStatus(string nameSystem, bool firstLogicalField, bool secondLogicalField) : base(firstLogicalField, secondLogicalField)
         {
-            this.systemName = name;
-        }
-        public SystemStatus(SystemStatus copy) : base(copy)
-        {
-            systemName = copy.systemName;
+            this.nameSystem = nameSystem;
         }
 
-        // Метод для получения статуса системы
+        public SystemStatus(SystemStatus copy) : base(copy)
+        {
+            this.nameSystem = copy.nameSystem;
+        }
+
         public string GetSystemStatus()
         {
             return base.Disjunction() ? "Система активна" : "Система не активна";
         }
-        public int GetNumber(bool bool1, bool bool2)
+
+        public int GetNumberActivField(bool firstLogicalField, bool secondLogicalField)
         {
-            int count = 0;
-            if (bool1 == true)
+            int countActivField = 0;
+
+            if (secondLogicalField == true)
             {
-                count++;
+                countActivField++;
             }
-            if (bool2 == true)
+
+            if (secondLogicalField == true)
             {
-                count++;
+                countActivField++;
             }
-            return count;
+
+            return countActivField;
         }
 
         public override string ToString()
         {
             Console.WriteLine();
-            return $"Имя системы: {systemName}";
+            return $"Имя системы: {nameSystem}";
         }
     }
 }

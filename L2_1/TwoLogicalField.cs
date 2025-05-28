@@ -8,29 +8,28 @@ namespace L2_1
 {
     internal class TwoLogicalField
     {
-        bool bool1;
-        bool bool2;
-        public TwoLogicalField(bool bool1, bool bool2)
+        bool firstLogicalField;
+        bool secondLogicalField;
+        public TwoLogicalField(bool firstLogicalField, bool secondLogicalField)
         {
-            this.bool1 = bool1;
-            this.bool2 = bool2;
-        }
-        // конструктор копирования
-        public TwoLogicalField(TwoLogicalField copy)
-        {
-            this.bool1 = copy.bool1;
-            this.bool2 = copy.bool2;
+            this.firstLogicalField = firstLogicalField;
+            this.secondLogicalField = secondLogicalField;
         }
 
-        // Дизъюнкция полей
+        public TwoLogicalField(TwoLogicalField copy)
+        {
+            this.firstLogicalField = copy.firstLogicalField;
+            this.secondLogicalField = copy.secondLogicalField;
+        }
+
         public bool Disjunction()
         {
-            return bool1 || bool2;
+            return firstLogicalField || secondLogicalField;
         }
-        // Перегрузка метода ToString()
+
         public override string ToString()
         {
-            return $"Поле 1: {bool1}, Поле 2: {bool2}";
+            return $"Поле 1: {firstLogicalField}, Поле 2: {secondLogicalField}";
         }
     }
 }
