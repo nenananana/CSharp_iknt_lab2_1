@@ -10,7 +10,12 @@ class Program
             bool firstLogicalField = Convert.ToBoolean(Console.ReadLine());
             Console.WriteLine("Введите логическое значение второго поля (true/false): ");
             bool secondLogicalField = Convert.ToBoolean(Console.ReadLine());
-
+        }
+        catch
+        {
+            Console.WriteLine("Некорректный ввод");
+        }
+        
             Console.Clear();
 
             // Тестирование базового класса
@@ -41,11 +46,6 @@ class Program
 
             Console.WriteLine(systemState.ToString());
             Console.WriteLine(systemState.GetSystemStatus());
-            Console.WriteLine($"Выполняется {Convert.ToString(systemState.GetNumberActivField(firstLogicalField, secondLogicalField))} процессов");
-        }
-        catch
-        {
-            Console.WriteLine("Некорректный ввод");
-        }
+            Console.WriteLine($"Выполняется {Convert.ToString(systemState.GetNumberActivField(firstLogicalField, secondLogicalField))} процессов")
     }
 }
